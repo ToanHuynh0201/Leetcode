@@ -11,7 +11,16 @@ function romanToInt(s: string): number {
 
 	if (!s) return 0;
 
-	let res = 0;
+	const n = s.length;
+	let res = romanMap.get(s[n - 1])!;
+
+	for (let i = n - 2; i >= 0; i--) {
+		if (romanMap.get(s[i])! < romanMap.get(s[i + 1])!) {
+			res -= romanMap.get(s[i])!;
+		} else {
+			res += romanMap.get(s[i])!;
+		}
+	}
 
 	return res;
 }
