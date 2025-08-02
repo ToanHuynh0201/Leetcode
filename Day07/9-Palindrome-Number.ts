@@ -1,12 +1,12 @@
 function isPalindrome2(x: number): boolean {
-	if (x < 0) return false;
+	if (x < 0 || (x % 10 === 0 && x !== 0)) return false;
 
-	let reverseNum = 0;
-	let temp = x;
-	while (temp > 0) {
-		reverseNum = reverseNum * 10 + (x % 10);
-		temp = Math.floor(temp / 10);
+	let reverted = 0;
+
+	while (x > reverted) {
+		reverted = reverted * 10 + (x % 10);
+		x = Math.floor(x / 10);
 	}
 
-	return x === reverseNum;
+	return x === reverted || x === Math.floor(reverted / 10);
 }
