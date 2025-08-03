@@ -1,22 +1,17 @@
 function isValid2(s: string): boolean {
+	const pairs = new Map<string, string>([
+		[")", "("],
+		["]", "["],
+		["}", "{"],
+	]);
+
 	const stack: string[] = [];
-	if (s.length === 1) return false;
-	for (let c of s) {
-		switch (c) {
-			case "(":
-			case "{":
-			case "[":
-				stack.push(c);
-				break;
-			case ")":
-				if (stack.pop() !== "(") return false;
-				break;
-			case "}":
-				if (stack.pop() !== "{") return false;
-				break;
-			case "]":
-				if (stack.pop() !== "[") return false;
-				break;
+
+	for (const char of s) {
+		if (pairs.has(char)) {
+			if (stack.pop() !== pairs.get(char)!) return false;
+		} else {
+			stack.push(char);
 		}
 	}
 
