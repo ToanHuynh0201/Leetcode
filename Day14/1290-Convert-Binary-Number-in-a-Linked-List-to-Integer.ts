@@ -7,12 +7,21 @@ class ListNode {
 	}
 }
 
+// function getDecimalValue(head: ListNode | null): number {
+// 	let string: string = "";
+// 	while (head !== null) {
+// 		string += head.val;
+// 		head = head.next;
+// 	}
+
+// 	return parseInt(string, 2);
+// }
 function getDecimalValue(head: ListNode | null): number {
-	let string: string = "";
-	while (head !== null) {
-		string += head.val;
+	let stringNumber: string = "";
+	while (head) {
+		stringNumber += head.val;
 		head = head.next;
 	}
 
-	return parseInt(string, 2);
+	return parseInt(stringNumber, 2);
 }

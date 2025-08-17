@@ -8,26 +8,51 @@ class ListNode {
 	}
 }
 
+// function mergeTwoLists(
+// 	list1: ListNode | null,
+// 	list2: ListNode | null
+// ): ListNode | null {
+// 	if (list1 === null) return list2;
+// 	if (list2 === null) return list1;
+// 	const dummy = new ListNode(0);
+// 	let op = dummy;
+
+// 	while (list1 && list2) {
+// 		if (list1!.val <= list2!.val) {
+// 			op.next = list1;
+// 			list1 = list1!.next;
+// 		} else {
+// 			op.next = list2;
+// 			list2 = list2!.next;
+// 		}
+// 		op = op.next!;
+// 	}
+
+// 	op.next = list1 || list2;
+// 	return dummy.next;
+// }
 function mergeTwoLists(
 	list1: ListNode | null,
 	list2: ListNode | null
 ): ListNode | null {
-	if (list1 === null) return list2;
-	if (list2 === null) return list1;
-	const dummy = new ListNode(0);
-	let op = dummy;
+	if (!list1) return list2;
+	if (!list2) return list1;
+
+	const resList = new ListNode(0);
+	let temp = resList;
 
 	while (list1 && list2) {
-		if (list1!.val <= list2!.val) {
-			op.next = list1;
-			list1 = list1!.next;
+		if (list1.val <= list2.val) {
+			temp.next = list1;
+			list1 = list1.next;
 		} else {
-			op.next = list2;
-			list2 = list2!.next;
+			temp.next = list2;
+			list2 = list2.next;
 		}
-		op = op.next!;
+		temp = temp.next;
 	}
 
-	op.next = list1 || list2;
-	return dummy.next;
+	temp.next = list1 || list2;
+
+	return resList.next;
 }
