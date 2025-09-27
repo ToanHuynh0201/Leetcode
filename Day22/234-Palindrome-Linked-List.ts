@@ -1,27 +1,27 @@
-class ListNode {
-	val: number;
-	next: ListNode | null;
-	constructor(val?: number, next?: ListNode | null) {
-		this.val = val === undefined ? 0 : val;
-		this.next = next === undefined ? null : next;
-	}
-}
+// class ListNode {
+// 	val: number;
+// 	next: ListNode | null;
+// 	constructor(val?: number, next?: ListNode | null) {
+// 		this.val = val === undefined ? 0 : val;
+// 		this.next = next === undefined ? null : next;
+// 	}
+// }
 
 function isPalindrome(head: ListNode | null): boolean {
-	const arr: number[] = [];
-	while (head !== null) {
-		arr.push(head.val);
-		head = head.next;
-	}
+    const arr: number[] = [];
+    while (head !== null) {
+        arr.push(head.val);
+        head = head.next;
+    }
 
-	let left = 0;
-	let right = arr.length - 1;
-	while (left < right) {
-		if (arr[left] !== arr[right]) return false;
+    let left = 0;
+    let right = arr.length - 1;
+    while (left < right) {
+        if (arr[left] !== arr[right]) return false;
 
-		left++;
-		right--;
-	}
+        left++;
+        right--;
+    }
 
-	return true;
+    return true;
 }
