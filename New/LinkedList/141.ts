@@ -7,14 +7,28 @@ class ListNode {
 	}
 }
 
-function hasCycle(head: ListNode | null): boolean {
-	let pointerFast: ListNode | null = head;
-	let pointerSlow: ListNode | null = head;
-	while (pointerFast && pointerFast.next) {
-		pointerSlow = pointerSlow!.next;
-		pointerFast = pointerFast?.next.next;
+// function hasCycle(head: ListNode | null): boolean {
+// 	let pointerFast: ListNode | null = head;
+// 	let pointerSlow: ListNode | null = head;
+// 	while (pointerFast && pointerFast.next) {
+// 		pointerSlow = pointerSlow!.next;
+// 		pointerFast = pointerFast?.next.next;
 
-		if (pointerSlow === pointerFast) return true;
+// 		if (pointerSlow === pointerFast) return true;
+// 	}
+
+// 	return false;
+// }
+
+function hasCycle(head: ListNode | null): boolean {
+	let fast = head;
+	let slow = head;
+
+	while (fast && fast.next) {
+		fast = fast.next.next;
+		slow = slow!.next;
+
+		if (slow === fast) return true;
 	}
 
 	return false;

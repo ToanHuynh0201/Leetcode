@@ -7,11 +7,24 @@ class ListNode {
 	}
 }
 
+// function reverseList(head: ListNode | null): ListNode | null {
+// 	let prev: ListNode | null = null;
+// 	let curr: ListNode | null = head;
+
+// 	while (curr !== null) {
+// 		const nextNode = curr.next;
+// 		curr.next = prev;
+// 		prev = curr;
+// 		curr = nextNode;
+// 	}
+
+// 	return prev;
+// }
 function reverseList(head: ListNode | null): ListNode | null {
 	let prev: ListNode | null = null;
 	let curr: ListNode | null = head;
 
-	while (curr !== null) {
+	while (curr) {
 		const nextNode = curr.next;
 		curr.next = prev;
 		prev = curr;
