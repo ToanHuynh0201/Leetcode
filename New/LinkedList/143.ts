@@ -48,33 +48,32 @@ class ListNode {
 function reorderList(head: ListNode | null): void {
 	let fast: ListNode | null = head;
 	let slow: ListNode | null = head;
-
 	while (fast && fast.next) {
 		fast = fast.next.next;
 		slow = slow!.next;
 	}
 
-	let second = slow!.next;
+	let second = slow?.next;
 	slow!.next = null;
 
 	let prev: ListNode | null = null;
 
 	while (second) {
-		const next = second.next;
+		let next = second.next;
 		second.next = prev;
 		prev = second;
 		second = next;
 	}
 
-	let reversedSecond = prev;
 	let first = head;
-	while (reversedSecond) {
-		const tmp1 = first!.next;
-		const tmp2 = reversedSecond!.next;
 
-		first!.next = reversedSecond;
-		reversedSecond!.next = tmp1;
+	while (prev) {
+		const tmp1 = first!.next;
+		const tmp2 = prev!.next;
+
+		first!.next = prev;
+		prev!.next = tmp1;
 		first = tmp1;
-		reversedSecond = tmp2;
+		prev = tmp2;
 	}
 }
