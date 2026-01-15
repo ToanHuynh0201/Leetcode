@@ -9,10 +9,8 @@ class TreeNode {
 	}
 }
 
-function invertTree(root: TreeNode | null): TreeNode | null {
-	if (!root) return null;
-	[root.left, root.right] = [root.right, root.left];
-	invertTree(root.left);
-	invertTree(root.right);
-	return root;
+function maxDepth(root: TreeNode | null): number {
+	if (!root) return 0;
+
+	return 1 + Math.max(maxDepth(root.left), maxDepth(root.right));
 }
