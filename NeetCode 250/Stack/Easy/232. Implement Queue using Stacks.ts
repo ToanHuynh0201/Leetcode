@@ -1,0 +1,22 @@
+class MyQueue {
+	private queue: number[];
+	constructor() {
+		this.queue = [];
+	}
+
+	push(x: number): void {
+		this.queue.push(x);
+	}
+
+	pop(): number {
+		return this.queue.shift()!;
+	}
+
+	peek(): number {
+		return this.queue[0];
+	}
+
+	empty(): boolean {
+		return !this.queue[0];
+	}
+}
