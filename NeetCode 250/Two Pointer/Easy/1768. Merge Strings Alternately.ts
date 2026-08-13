@@ -1,10 +1,9 @@
 function mergeAlternately(word1: string, word2: string): string {
-	let resultStr = "";
-
+	let str = "";
 	for (let i = 0; i < Math.max(word1.length, word2.length); i++) {
-		if (i < word1.length) resultStr += word1[i];
-		if (i < word2.length) resultStr += word2[i];
+		word1[i] && (str += word1[i]);
+		word2[i] && (str += word2[i]);
 	}
 
-	return resultStr;
+	return str;
 }

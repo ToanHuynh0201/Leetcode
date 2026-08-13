@@ -1,26 +1,26 @@
 function isValidSudoku(board: string[][]): boolean {
-	const rows: boolean[][] = Array.from({ length: 9 }, () =>
-		Array(9).fill(false),
-	);
-	const cols: boolean[][] = Array.from({ length: 9 }, () =>
-		Array(9).fill(false),
-	);
-	const boxes: boolean[][] = Array.from({ length: 9 }, () =>
-		Array(9).fill(false),
-	);
+	const rows = Array.from({ length: 9 }, () => new Set<string>());
+	const cols = Array.from({ length: 9 }, () => new Set<string>());
+	const boxes = Array.from({ length: 9 }, () => new Set<string>());
 
 	for (let i = 0; i < 9; i++) {
 		for (let j = 0; j < 9; j++) {
-			if (board[i][j] !== ".") {
-				const num = board[i][j].charCodeAt(0) - "1".charCodeAt(0);
-				const boxIndex = Math.floor(i / 3) * 3 + Math.floor(j / 3);
+			const val = board[i][j];
+			if (val === ".") continue;
 
-				if (rows[i][num] || cols[j][num] || boxes[boxIndex][num])
-					return false;
-				rows[i][num] = cols[j][num] = boxes[boxIndex][num] = true;
-			}
+			const boxIndex = Math.floor(i / 3) * 3 + Math.floor(j / 3);
+
+			if (
+				rows[i].has(val) ||
+				cols[j].has(val) ||
+				boxes[boxIndex].has(val)
+			)
+				return false;
+
+			rows[i].add(val);
+			cols[j].add(val);
+			boxes[boxIndex].add(val);
 		}
 	}
-
 	return true;
 }

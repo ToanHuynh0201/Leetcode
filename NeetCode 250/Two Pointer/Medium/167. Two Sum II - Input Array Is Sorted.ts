@@ -1,3 +1,18 @@
+// function twoSum(numbers: number[], target: number): number[] {
+// 	let i = 0,
+// 		j = numbers.length - 1;
+
+// 	while (i < j) {
+// 		let sum = numbers[i] + numbers[j];
+
+// 		if (sum === target) return [++i, ++j];
+// 		else if (sum > target) j--;
+// 		else i++;
+// 	}
+
+// 	return [0];
+// }
+
 function twoSum(numbers: number[], target: number): number[] {
 	let i = 0,
 		j = numbers.length - 1;
@@ -5,10 +20,11 @@ function twoSum(numbers: number[], target: number): number[] {
 	while (i < j) {
 		let sum = numbers[i] + numbers[j];
 
-		if (sum === target) return [++i, ++j];
-		else if (sum > target) j--;
-		else i++;
+		if (sum < target) {
+			i++;
+		} else if (sum > target) {
+			j--;
+		} else return [++i, ++j];
 	}
-
-	return [0];
+	return [];
 }

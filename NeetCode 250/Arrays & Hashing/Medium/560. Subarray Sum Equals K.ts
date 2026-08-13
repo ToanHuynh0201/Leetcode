@@ -1,18 +1,16 @@
 function subarraySum(nums: number[], k: number): number {
+	let count: number = 0;
+	let currSum: number = 0;
+
 	const map = new Map<number, number>();
 	map.set(0, 1);
 
-	let sum = 0,
-		count = 0;
-
 	for (const num of nums) {
-		sum += num;
+		currSum += num;
 
-		if (map.has(sum - k)) {
-			count += map.get(sum - k)!;
-		}
+		if (map.has(currSum - k)) count += map.get(currSum - k)!;
 
-		map.set(sum, (map.get(sum) || 0) + 1);
+		map.set(currSum, (map.get(currSum) ?? 0) + 1);
 	}
 
 	return count;

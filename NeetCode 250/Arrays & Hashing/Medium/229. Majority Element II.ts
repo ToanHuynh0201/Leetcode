@@ -6,5 +6,5 @@ function majorityElement(nums: number[]): number[] {
 
 	return Array.from(map.entries())
 		.filter((entry) => entry[1] > nums.length / 3)
-		.map(([key]) => key);
+		.map((entry) => entry[0]);
 }

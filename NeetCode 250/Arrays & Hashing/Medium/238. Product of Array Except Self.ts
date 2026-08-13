@@ -2,8 +2,9 @@ function productExceptSelf(nums: number[]): number[] {
 	const n = nums.length;
 	const res = Array(n).fill(1);
 
-	//Left product
-	for (let i = 1; i < n; i++) res[i] = res[i - 1] * nums[i - 1];
+	for (let i = 1; i < nums.length; i++) {
+		res[i] = res[i - 1] * nums[i - 1];
+	}
 
 	let post = 1;
 	for (let i = n - 1; i >= 0; i--) {
